@@ -71,5 +71,29 @@
     <div class="line">(clap)(clap)(clap)(clap)(clap)</div>
     <div class="line">🐶 And <span class="highlight">BINGO</span> was his <span class="highlight">name-o</span>.</div>
 </div>
+    <script>
+    let lyricsContainer = document.querySelector(".lyrics");
+    let lines = lyricsContainer.querySelectorAll(".line");
+    let delayBetweenLines = 2000;
+    let currentLine = 0;
+
+    function showLine() {
+        if (currentLine >= lines.length) return;
+
+        lines[currentLine].style.display = 'block';
+        lines[currentLine].scrollIntoView({ behavior: "smooth", block: "start" });
+
+        currentLine++;
+        setTimeout(showLine, delayBetweenLines);
+    }
+
+    // Hide all lines initially
+    for (let line of lines) {
+        line.style.display = 'none';
+    }
+
+    // Start showing lines one by one
+    showLine();
+</script>
 </body>
 </html>
